@@ -2,7 +2,7 @@
 
 ## Installation
 ```bash
-sudo curl -so /usr/local/bin/upload.py https://raw.githubusercontent.com/hakimifr/upload/refs/heads/main/upload.py
+sudo curl -so /usr/local/bin/upload.py https://raw.githubusercontent.com/hakimifr/upload/refs/heads/main/upload.py && sudo chmod +x /usr/local/bin/upload.py
 ```
 
 ## What you need

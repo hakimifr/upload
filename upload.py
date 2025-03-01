@@ -63,7 +63,10 @@ async def upload_file(app: Client, chat_id: int, file: str) -> None:
 
     def update_progress(current: int, total: int) -> None:
         progress.start_task(task)
-        progress.update(task, total=total, completed=current)
+        if current == total:
+            progress.update(task, total=total, completed=current, visible=False)
+        else:
+            progress.update(task, total=total, completed=current)
         progress.refresh()
 
     await app.send_document(chat_id, file, progress=update_progress)
@@ -92,6 +95,7 @@ async def main() -> None:
     tasks: list[asyncio.Task] = [asyncio.create_task(upload_file(app, chat_id, file)) for file in good_files]
     await asyncio.wait(tasks)
 
+    console.print("[bold green]Done![/bold green]")
     progress.stop()
     await app.stop()
 

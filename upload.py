@@ -65,6 +65,7 @@ async def upload_file(app: Client, chat_id: int, file: str) -> None:
         progress.start_task(task)
         if current == total:
             progress.update(task, total=total, completed=current, visible=False)
+            console.print(f"[bold green]✔ [/bold green][bold #FFFFFF]{file}[/bold #FFFFFF]")
         else:
             progress.update(task, total=total, completed=current)
         progress.refresh()
